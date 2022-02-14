@@ -1,0 +1,47 @@
+Name:	systemd
+Umask:	0000
+State:	S (sleeping)
+Tgid:	1
+Ngid:	0
+Pid:	1
+PPid:	0
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	128
+Groups:	
+VmPeak:	  257764 kB
+VmSize:	  192228 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    4784 kB
+VmRSS:	    4780 kB
+RssAnon:	    2304 kB
+RssFile:	    2476 kB
+RssShmem:	       0 kB
+VmData:	  149824 kB
+VmStk:	     132 kB
+VmExe:	    1412 kB
+VmLib:	    3724 kB
+VmPTE:	     124 kB
+VmSwap:	       0 kB
+Threads:	1
+SigQ:	5/256550
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	7be3c0fe28014a03
+SigIgn:	0000000000001000
+SigCgt:	00000001800004ec
+CapInh:	0000000000000000
+CapPrm:	0000001fffffffff
+CapEff:	0000001fffffffff
+CapBnd:	0000001fffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Speculation_Store_Bypass:	thread vulnerable
+Cpus_allowed:	ffffffff,ffffffff
+Cpus_allowed_list:	0-63
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,000000ff
+Mems_allowed_list:	0-7
+voluntary_ctxt_switches:	159975
+nonvoluntary_ctxt_switches:	15876

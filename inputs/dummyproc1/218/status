@@ -1,0 +1,47 @@
+Name:	virtlogd
+Umask:	0022
+State:	D (disk sleep)
+Tgid:	40025
+Ngid:	0
+Pid:	40025
+PPid:	1
+TracerPid:	0
+Uid:	1041	1041	1041	1041
+Gid:	200	200	200	200
+FDSize:	64
+Groups:	200 
+VmPeak:	  143332 kB
+VmSize:	  143332 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    4700 kB
+VmRSS:	    4696 kB
+RssAnon:	    1204 kB
+RssFile:	    3492 kB
+RssShmem:	       0 kB
+VmData:	     712 kB
+VmStk:	     132 kB
+VmExe:	     688 kB
+VmLib:	   15996 kB
+VmPTE:	     268 kB
+VmSwap:	       0 kB
+Threads:	1
+SigQ:	1/256550
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000001000
+SigCgt:	0000000180004206
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000001fffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Speculation_Store_Bypass:	thread vulnerable
+Cpus_allowed:	ffffffff,ffffffff
+Cpus_allowed_list:	0-63
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,000000ff
+Mems_allowed_list:	0-7
+voluntary_ctxt_switches:	12966
+nonvoluntary_ctxt_switches:	7
