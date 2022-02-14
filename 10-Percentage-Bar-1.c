@@ -24,31 +24,31 @@ subtest("Percentage inputs that should yield an empty 0% percentage bar",
     double input;
 
     input = 0.0;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = -0.4;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = -0.0;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = NaN;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = neg_inf;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
@@ -63,25 +63,25 @@ subtest("Percentage inputs that should yield a 100% percentage bar",
     double input;
 
     input = 1.0;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = 3.8;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = 100.0;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
 
     input = pos_inf;
-    draw_percbar(bar, input);
+    display_percbar(bar, input);
     test_assert_str(bar, "==", expected_bar, 30);
     test_printf("%f", input);
     test_printf("%s\n", bar);
@@ -118,7 +118,7 @@ subtest("A variety of percentage inputs",
     char bar[30];
 
     for (int i = 0; i < sizeof(inputs) / sizeof(double); ++i) {
-        draw_percbar(bar, inputs[i]);
+        display_percbar(bar, inputs[i]);
         test_assert_str(bar, "==", expected_outputs[i], 30);
         test_printf("%f", inputs[i]);
         test_printf("%s\n", bar);
