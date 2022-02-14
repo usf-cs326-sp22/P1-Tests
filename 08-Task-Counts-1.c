@@ -15,13 +15,10 @@ subtest("Comparing against fake procfs test set",
 {
     char *fakeproc = build_path(getenv("TEST_DIR"), "/inputs/fakeproc");
 
-    struct task_stats *pstats = pfs_create_tstats();
     struct task_stats *tstats = pfs_create_tstats();
-    struct cpu_stats cpu1 = { 0 };
-    struct cpu_stats cpu2 = { 0 };
     test_assert(tstats != NULL);
 
-    pfs_tasks(fakeproc, pstats, tstats, &cpu1, &cpu2);
+    pfs_tasks(fakeproc, tstats);
 
     test_assert(tstats->running == 2);
     test_printf("%zu", tstats->running);
@@ -40,20 +37,16 @@ subtest("Comparing against fake procfs test set",
 
     free(fakeproc);
     pfs_destroy_tstats(tstats);
-    pfs_destroy_tstats(pstats);
 });
 
 subtest("Comparing against the tiny 'dummyproc' test set",
 {
     char *fakeproc = build_path(getenv("TEST_DIR"), "/inputs/dummyproc1");
 
-    struct task_stats *pstats = pfs_create_tstats();
     struct task_stats *tstats = pfs_create_tstats();
-    struct cpu_stats cpu1 = { 0 };
-    struct cpu_stats cpu2 = { 0 };
     test_assert(tstats != NULL);
 
-    pfs_tasks(fakeproc, pstats, tstats, &cpu1, &cpu2);
+    pfs_tasks(fakeproc, tstats);
 
     test_assert(tstats->running == 0);
     test_printf("%zu", tstats->running);
@@ -72,7 +65,6 @@ subtest("Comparing against the tiny 'dummyproc' test set",
 
     free(fakeproc);
     pfs_destroy_tstats(tstats);
-    pfs_destroy_tstats(pstats);
 });
 
 test_end
