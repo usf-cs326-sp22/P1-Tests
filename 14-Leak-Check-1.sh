@@ -1,4 +1,4 @@
-source "${TEST_DIR}/lib/funcs.bash"
+source "${TEST_LIB}/funcs.bash"
 
 fd_check='
 {
