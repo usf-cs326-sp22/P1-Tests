@@ -14,8 +14,8 @@ fd_check='
 test_start "Memory Leak Check"
 
 if ! ( which valgrind &> /dev/null ); then
-    # cppcheck is not installed.
-    # (Install with `pacman -Sy cppcheck`)
+    # valgrind is not installed.
+    # (Install with `pacman -Sy valgrind`)
     test_end 1
 fi
 
