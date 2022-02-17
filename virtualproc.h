@@ -17,10 +17,12 @@
 
 /* Function prototypes */
 int open(const char *pathname, int flags);
+int openat(int fd, const char *pathname, int flags);
 unsigned int sleep(unsigned int seconds);
 
 /* Function pointers */
-int (*orig_open)(const char * pathname, int flags) = NULL;
+int (*orig_open)(const char *pathname, int flags) = NULL;
+int (*orig_openat)(int fd, const char *pathname, int flags) = NULL;
 
 /* Globals */
 bool enabled = false;
@@ -96,6 +98,10 @@ void vp_initialize(void)
     LOG("Overriding original open() system call at %p -> %p\n",
             orig_open, open);
 
+    orig_openat = (int (*)(int, const char *, int)) dlsym(RTLD_NEXT, "openat");
+    LOG("Overriding original openat() system call at %p -> %p\n",
+            orig_openat, openat);
+
     stat_loc = getenv("FAKE_STAT");
     mem_loc = getenv("FAKE_MEMINFO");
     load_loc = getenv("FAKE_LOADAVG");
@@ -149,6 +155,40 @@ int open(const char *pathname, int flags)
 
     return (*orig_open)(pathname, flags);
 }
+
+int openat(int fd, const char *pathname, int flags)
+{
+    //LOG("open(%s)\n", pathname);
+    if (enabled == false || pathname == NULL) {
+        LOG("Calling orig %d , %s\n", fd, pathname);
+        return (*orig_openat)(fd, pathname, flags);
+    }
+
+    if (stat_fakes > 0 && endswith(pathname, "stat")) {
+        char new_path[PATH_SZ];
+        fake_path(new_path, PATH_SZ, stat_loc, "stat", stat_fakes, &last_stat);
+        LOG("Replacing open(/proc/stat) with open(%s)\n", new_path);
+        return (*orig_open)(new_path, flags);
+    }
+
+    if (mem_fakes > 0 && endswith(pathname, "meminfo")) {
+        char new_path[PATH_SZ];
+        fake_path(new_path, PATH_SZ, mem_loc, "meminfo", mem_fakes, &last_mem);
+        LOG("Replacing open(/proc/meminfo) with open(%s)\n", new_path);
+        return (*orig_open)(new_path, flags);
+    }
+
+    if (load_fakes > 0 && endswith(pathname, "loadavg")) {
+        char new_path[PATH_SZ];
+        fake_path(new_path, PATH_SZ, load_loc, "loadavg",
+                load_fakes, &last_load);
+        LOG("Replacing open(/proc/loadavg) with open(%s)\n", new_path);
+        return (*orig_open)(new_path, flags);
+    }
+
+    return (*orig_open)(pathname, flags);
+}
+
 
 unsigned int sleep(unsigned int seconds)
 {
