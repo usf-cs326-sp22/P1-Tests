@@ -116,20 +116,20 @@ subtest("Predefined CPU usages, simulated by dynamically generating /proc/stat "
     }
 });
 
-subtest("Rapid calls with no sleep() between to pfs_cpu_usage should "
-        "almost always yield 0% or 100% usage.",
-{
-    vp_off();
-    struct cpu_stats prev_cpu = { 0 };
-    pfs_cpu_usage("/proc", &prev_cpu, &prev_cpu);
-    for (int i = 0; i < 3; ++i) {
-        struct cpu_stats curr_cpu;
-        pfs_cpu_usage("/proc", &prev_cpu, &curr_cpu);
-        curr_cpu.usage_perc *= 100;
-        test_assert((curr_cpu.usage_perc == 0.0 || curr_cpu.usage_perc == 1.0));
-        test_printf("%.2f", curr_cpu.usage_perc);
-        prev_cpu = curr_cpu;
-    }
-});
+//subtest("Rapid calls with no sleep() between to pfs_cpu_usage should "
+//        "almost always yield 0% or 100% usage.",
+//{
+//    vp_off();
+//    struct cpu_stats prev_cpu = { 0 };
+//    pfs_cpu_usage("/proc", &prev_cpu, &prev_cpu);
+//    for (int i = 0; i < 3; ++i) {
+//        struct cpu_stats curr_cpu;
+//        pfs_cpu_usage("/proc", &prev_cpu, &curr_cpu);
+//        curr_cpu.usage_perc *= 100;
+//        test_assert((curr_cpu.usage_perc == 0.0 || curr_cpu.usage_perc == 1.0));
+//        test_printf("%.2f", curr_cpu.usage_perc);
+//        prev_cpu = curr_cpu;
+//    }
+//});
 
 test_end
