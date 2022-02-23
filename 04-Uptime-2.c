@@ -47,7 +47,7 @@ subtest("Retrieving the formatted uptime from dummyproc1",
                 "==",
                 "17 days, 05:38:55",
                 1024);
-        test_printf("%s", formatted_uptime);
+        test_printf("'%s'", formatted_uptime);
     }
 });
 
@@ -77,7 +77,7 @@ subtest("Retrieving the formatted uptime from dummyproc3",
                 "==",
                 "03:42:53",
                 1024);
-        test_printf("%s", formatted_uptime);
+        test_printf("'%s'", formatted_uptime);
     }
 });
 
@@ -107,7 +107,7 @@ subtest("Retrieving the formatted uptime from dummyproc4",
                 "==",
                 "1 day, 00:00:00",
                 1024);
-        test_printf("%s", formatted_uptime);
+        test_printf("'%s'", formatted_uptime);
     }
 });
 
